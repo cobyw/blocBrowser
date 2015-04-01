@@ -10,4 +10,7 @@
 
 @interface BLCWebBrowserViewController : UIViewController
 
+//replaces the webview with a fresh one which erases all history
+-(void) resetWebView;
+
 @end
