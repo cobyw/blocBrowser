@@ -10,10 +10,10 @@
 		CB05E9721ACA0F2800729D98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB05E9711ACA0F2800729D98 /* main.m */; };
 		CB05E9751ACA0F2800729D98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB05E9741ACA0F2800729D98 /* AppDelegate.m */; };
 		CB05E9781ACA0F2800729D98 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB05E9771ACA0F2800729D98 /* ViewController.m */; };
-		CB05E97B1ACA0F2800729D98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB05E9791ACA0F2800729D98 /* Main.storyboard */; };
 		CB05E97D1ACA0F2800729D98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB05E97C1ACA0F2800729D98 /* Images.xcassets */; };
-		CB05E9801ACA0F2800729D98 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB05E97E1ACA0F2800729D98 /* LaunchScreen.xib */; };
 		CB05E98C1ACA0F2900729D98 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB05E98B1ACA0F2900729D98 /* BlocBrowserTests.m */; };
+		CB05E9971ACA110A00729D98 /* BLCWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB05E9961ACA110A00729D98 /* BLCWebBrowserViewController.m */; };
+		CB76F0F71ACC3F07004EE5BF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB76F0F61ACC3F07004EE5BF /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,12 +34,13 @@
 		CB05E9741ACA0F2800729D98 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CB05E9761ACA0F2800729D98 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CB05E9771ACA0F2800729D98 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CB05E97A1ACA0F2800729D98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB05E97C1ACA0F2800729D98 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CB05E97F1ACA0F2800729D98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CB05E9851ACA0F2900729D98 /* BlocBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB05E98A1ACA0F2900729D98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB05E98B1ACA0F2900729D98 /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
+		CB05E9951ACA110A00729D98 /* BLCWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCWebBrowserViewController.h; sourceTree = "<group>"; };
+		CB05E9961ACA110A00729D98 /* BLCWebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCWebBrowserViewController.m; sourceTree = "<group>"; };
+		CB76F0F61ACC3F07004EE5BF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 		CB05E9631ACA0F2800729D98 = {
 			isa = PBXGroup;
 			children = (
+				CB76F0F61ACC3F07004EE5BF /* Default-568h@2x.png */,
 				CB05E96E1ACA0F2800729D98 /* BlocBrowser */,
 				CB05E9881ACA0F2900729D98 /* BlocBrowserTests */,
 				CB05E96D1ACA0F2800729D98 /* Products */,
@@ -85,9 +87,9 @@
 				CB05E9741ACA0F2800729D98 /* AppDelegate.m */,
 				CB05E9761ACA0F2800729D98 /* ViewController.h */,
 				CB05E9771ACA0F2800729D98 /* ViewController.m */,
-				CB05E9791ACA0F2800729D98 /* Main.storyboard */,
 				CB05E97C1ACA0F2800729D98 /* Images.xcassets */,
-				CB05E97E1ACA0F2800729D98 /* LaunchScreen.xib */,
+				CB05E9951ACA110A00729D98 /* BLCWebBrowserViewController.h */,
+				CB05E9961ACA110A00729D98 /* BLCWebBrowserViewController.m */,
 				CB05E96F1ACA0F2800729D98 /* Supporting Files */,
 			);
 			path = BlocBrowser;
@@ -199,9 +201,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB05E97B1ACA0F2800729D98 /* Main.storyboard in Resources */,
-				CB05E9801ACA0F2800729D98 /* LaunchScreen.xib in Resources */,
 				CB05E97D1ACA0F2800729D98 /* Images.xcassets in Resources */,
+				CB76F0F71ACC3F07004EE5BF /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +222,7 @@
 			files = (
 				CB05E9781ACA0F2800729D98 /* ViewController.m in Sources */,
 				CB05E9751ACA0F2800729D98 /* AppDelegate.m in Sources */,
+				CB05E9971ACA110A00729D98 /* BLCWebBrowserViewController.m in Sources */,
 				CB05E9721ACA0F2800729D98 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,25 +244,6 @@
 			targetProxy = CB05E9861ACA0F2900729D98 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CB05E9791ACA0F2800729D98 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CB05E97A1ACA0F2800729D98 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CB05E97E1ACA0F2800729D98 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CB05E97F1ACA0F2800729D98 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CB05E98D1ACA0F2900729D98 /* Debug */ = {
@@ -414,6 +397,7 @@
 				CB05E9911ACA0F2900729D98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB05E9921ACA0F2900729D98 /* Build configuration list for PBXNativeTarget "BlocBrowserTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +406,7 @@
 				CB05E9941ACA0F2900729D98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
