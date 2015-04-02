@@ -14,6 +14,7 @@
 		CB05E98C1ACA0F2900729D98 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB05E98B1ACA0F2900729D98 /* BlocBrowserTests.m */; };
 		CB05E9971ACA110A00729D98 /* BLCWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB05E9961ACA110A00729D98 /* BLCWebBrowserViewController.m */; };
 		CB76F0F71ACC3F07004EE5BF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB76F0F61ACC3F07004EE5BF /* Default-568h@2x.png */; };
+		CB88A28A1ACD8E51000962D8 /* ColorfulToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB88A2891ACD8E51000962D8 /* ColorfulToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		CB05E9951ACA110A00729D98 /* BLCWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCWebBrowserViewController.h; sourceTree = "<group>"; };
 		CB05E9961ACA110A00729D98 /* BLCWebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCWebBrowserViewController.m; sourceTree = "<group>"; };
 		CB76F0F61ACC3F07004EE5BF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CB88A2881ACD8E51000962D8 /* ColorfulToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorfulToolbar.h; sourceTree = "<group>"; };
+		CB88A2891ACD8E51000962D8 /* ColorfulToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorfulToolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 			children = (
 				CB05E9731ACA0F2800729D98 /* AppDelegate.h */,
 				CB05E9741ACA0F2800729D98 /* AppDelegate.m */,
+				CB88A2881ACD8E51000962D8 /* ColorfulToolbar.h */,
+				CB88A2891ACD8E51000962D8 /* ColorfulToolbar.m */,
 				CB05E9761ACA0F2800729D98 /* ViewController.h */,
 				CB05E9771ACA0F2800729D98 /* ViewController.m */,
 				CB05E97C1ACA0F2800729D98 /* Images.xcassets */,
@@ -220,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB88A28A1ACD8E51000962D8 /* ColorfulToolbar.m in Sources */,
 				CB05E9781ACA0F2800729D98 /* ViewController.m in Sources */,
 				CB05E9751ACA0F2800729D98 /* AppDelegate.m in Sources */,
 				CB05E9971ACA110A00729D98 /* BLCWebBrowserViewController.m in Sources */,
