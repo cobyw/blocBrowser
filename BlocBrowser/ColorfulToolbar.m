@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray *colors;
 @property (nonatomic, strong) NSArray *labels;
 @property (nonatomic, weak) UILabel *currentLabel;
+@property (nonatomic, strong) NSString *text;
 
 @end
 
@@ -27,6 +28,7 @@
     
     if (self)
     {
+        self.text =nil;
         self.currentTitles = titles;
         self.colors = @[[ UIColor colorWithRed:199/255. green:158/255. blue:203/255. alpha:1],
                         [ UIColor colorWithRed:255/255. green:105/255. blue:97/255. alpha:1],
@@ -100,6 +102,7 @@
 
 #pragma mark - Touch Handling
 
+
 -(UILabel *)labelFromTouches:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
@@ -115,7 +118,7 @@
     self.currentLabel = label;
     self.currentLabel.alpha = 0.5;
     
-    NSLog(@"Touch began on : %@", label.text);
+    NSLog(@"Touch began on : %@", self.currentLabel.text);
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
