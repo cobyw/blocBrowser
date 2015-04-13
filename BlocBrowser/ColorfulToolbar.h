@@ -15,6 +15,7 @@
 @optional
 
 -(void) floatingToolbar:(ColorfulToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title;
+- (void) floatingToolbar:(ColorfulToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset;
 
 @end
 
@@ -23,6 +24,10 @@
 -(instancetype) initWithFourTitles:(NSArray *)titles;
 
 -(void) setEnabled:(BOOL)enabled forButtonWithTitle:(NSString *) title;
+
+-(void) tapFired: (UITapGestureRecognizer *) recognizer;
+
+-(void) panFired:(UIPanGestureRecognizer *)recognizer;
 
 @property (nonatomic, weak) id <ColorfulToolbarDelegate> delegate;
 

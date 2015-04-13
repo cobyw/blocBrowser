@@ -69,7 +69,7 @@
     
     static const CGFloat itemHeight = 50;
     CGFloat width = CGRectGetWidth(self.view.bounds);
-    CGFloat browserHeight = CGRectGetHeight(self.view.bounds) - itemHeight - itemHeight;
+    CGFloat browserHeight = CGRectGetHeight(self.view.bounds) - itemHeight;
     
     //now assign the frames
     self.textField.frame = CGRectMake(0, 0, width, itemHeight);
@@ -86,6 +86,20 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+}
+
+
+-(void) floatingToolbar:(ColorfulToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset
+{
+    CGPoint startingPoint = toolbar.frame.origin;
+    CGPoint newPoint = CGPointMake(startingPoint.x + offset.x, startingPoint.y + offset.y);
+    
+    CGRect potentialNewFrame = CGRectMake(newPoint.x, newPoint.y, CGRectGetWidth(toolbar.frame), CGRectGetHeight(toolbar.frame));
+    
+    if (CGRectContainsRect(self.view.bounds, potentialNewFrame))
+    {
+        toolbar.frame = potentialNewFrame;
+    }
 }
 
 #pragma mark - UITextFieldDelegate
