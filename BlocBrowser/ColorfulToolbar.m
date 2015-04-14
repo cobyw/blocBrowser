@@ -11,12 +11,16 @@
 @interface ColorfulToolbar ()
 
 @property (nonatomic, strong) NSArray *currentTitles;
-@property (nonatomic, strong) NSArray *colors;
+@property (nonatomic, strong) NSMutableArray *colors;
 @property (nonatomic, strong) NSArray *labels;
 @property (nonatomic, weak) UILabel *currentLabel;
 @property (nonatomic, strong) NSString *text;
+
+//gestures
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, strong) UIPinchGestureRecognizer *pinchGesture;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
 
 @end
 
@@ -70,6 +74,12 @@
         
         self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panFired:)];
         [self addGestureRecognizer:self.panGesture];
+        
+        self.pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchFired:)];
+        [self addGestureRecognizer:self.pinchGesture];
+        
+        self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressFired:)];
+        [self addGestureRecognizer:self.longPressGesture];
     }
     return self;
 }
@@ -144,62 +154,41 @@
     }
 }
 
-/*
--(UILabel *)labelFromTouches:(NSSet *)touches withEvent:(UIEvent *)event
+-(void) pinchFired:(UIPinchGestureRecognizer *) recognizer
 {
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:self];
-    UIView *subview = [self hitTest:location withEvent:event];
-    return (UILabel *)subview;
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UILabel *label = [self labelFromTouches:touches withEvent:event];
-    
-    self.currentLabel = label;
-    self.currentLabel.alpha = 0.5;
-    
-    NSLog(@"Touch began on : %@", self.currentLabel.text);
-}
-
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UILabel *label = [self labelFromTouches:touches withEvent:event];
-    
-    if (self.currentLabel != label)//the label being touched is no longer the initial label
+    if (recognizer.state == UIGestureRecognizerStateChanged)
     {
-        self.currentLabel.alpha = 1;
-    }
-    else //the label being touched is the initial label
-    {
-        self.currentLabel.alpha = 0.5;
+        //resize the thing
     }
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+-(void) longPressFired:(UILongPressGestureRecognizer *) recognizer
 {
-    UILabel *label = [self labelFromTouches:touches withEvent:event];
-    
-    if (self.currentLabel == label)
+    if (recognizer.state == UIGestureRecognizerStateRecognized)
     {
-        NSLog(@"Label tapped: %@", self.currentLabel.text);
-        
-        if ([self.delegate respondsToSelector:@selector(floatingToolbar:didSelectButtonWithTitle:)])
+        //move the colors around
+        int numberOfColors = [self.colors count];
+        NSLog(@"there are %d colors", [self.colors count]);
+        for (int x = 0; x < numberOfColors; x++)
         {
-            [self.delegate floatingToolbar:self didSelectButtonWithTitle:self.currentLabel.text];
+            int temp = x+1;
+            NSLog (@"x = %d", x);
+            if (temp != numberOfColors)
+            {
+                NSLog (@"inside the if");
+                [self.colors exchangeObjectAtIndex:x withObjectAtIndex:(temp)];
+                NSLog (@"inside the if after the exchange");
+            }
+            else
+            {
+                [self.colors exchangeObjectAtIndex:x withObjectAtIndex:0];
+            }
         }
+        
+        
     }
-    self.currentLabel.alpha = 1;
-    self.currentLabel = nil;
 }
 
--(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    self.currentLabel.alpha = 1;
-    self.currentLabel = nil;
-}
-*/
 
 #pragma mark - Button Enabling
 
