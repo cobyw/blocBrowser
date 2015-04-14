@@ -176,7 +176,7 @@
             if (temp != numberOfColors)
             {
                 NSLog (@"inside the if");
-                [self.colors exchangeObjectAtIndex:x withObjectAtIndex:(temp)];
+                [self.colors exchangeObjectAtIndex:x withObjectAtIndex:temp];
                 NSLog (@"inside the if after the exchange");
             }
             else
