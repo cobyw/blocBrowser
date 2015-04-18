@@ -201,6 +201,7 @@
 
     self.textField.text = nil;
     [self updateButtonsAndTitle];
+    
 }
 
 

@@ -36,10 +36,12 @@
     {
         self.text =nil;
         self.currentTitles = titles;
-        self.colors = @[[ UIColor colorWithRed:199/255. green:158/255. blue:203/255. alpha:1],
+        self.colors = [@[[ UIColor colorWithRed:199/255. green:158/255. blue:203/255. alpha:1],
                         [ UIColor colorWithRed:255/255. green:105/255. blue:97/255. alpha:1],
                         [ UIColor colorWithRed:222/255. green:165/255. blue:164/255. alpha:1],
-                        [ UIColor colorWithRed:255/255. green:179/255. blue:71/255. alpha:1]];
+                        [ UIColor colorWithRed:255/255. green:179/255. blue:71/255. alpha:1]] mutableCopy];
+
+        
         NSMutableArray *labelsArray =[[NSMutableArray alloc] init];
         
         //make the four labels
@@ -110,7 +112,7 @@
         }
         else
         {
-            labelX=CGRectGetWidth(self.bounds)/2;
+            labelX= labelWidth;
         }
         
         thisLabel.frame = CGRectMake(labelX, labelY, labelWidth, labelHeight);
@@ -166,27 +168,28 @@
 {
     if (recognizer.state == UIGestureRecognizerStateRecognized)
     {
-        //move the colors around
+        //move the colors around within the color array
         int numberOfColors = [self.colors count];
-        NSLog(@"there are %d colors", [self.colors count]);
         for (int x = 0; x < numberOfColors; x++)
         {
             int temp = x+1;
-            NSLog (@"x = %d", x);
             if (temp != numberOfColors)
             {
-                NSLog (@"inside the if");
                 [self.colors exchangeObjectAtIndex:x withObjectAtIndex:temp];
-                NSLog (@"inside the if after the exchange");
             }
             else
             {
                 [self.colors exchangeObjectAtIndex:x withObjectAtIndex:0];
             }
         }
-        
-        
+
+        //set the array to actually show the new colors
     }
+}
+
+-(void) updateLabels
+{
+    [self layoutSubviews];
 }
 
 
