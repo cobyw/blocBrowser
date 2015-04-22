@@ -102,6 +102,11 @@
     }
 }
 
+-(void) floatingToolbar:(ColorfulToolbar *)toolbar didTryToScale:(CGFloat)scale
+{
+    toolbar.transform = CGAffineTransformScale(toolbar.transform, scale, scale);
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {

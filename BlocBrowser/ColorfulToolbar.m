@@ -12,9 +12,10 @@
 
 @property (nonatomic, strong) NSArray *currentTitles;
 @property (nonatomic, strong) NSMutableArray *colors;
-@property (nonatomic, strong) NSArray *labels;
+@property (nonatomic, strong) NSMutableArray *labels;
 @property (nonatomic, weak) UILabel *currentLabel;
 @property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) NSMutableArray *labelsArray;
 
 //gestures
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
@@ -42,29 +43,11 @@
                         [ UIColor colorWithRed:255/255. green:179/255. blue:71/255. alpha:1]] mutableCopy];
 
         
-        NSMutableArray *labelsArray =[[NSMutableArray alloc] init];
+        self.labelsArray =[[NSMutableArray alloc] init];
         
-        //make the four labels
-        for (NSString *currentTitle in self.currentTitles)
-        {
-            UILabel *label = [[UILabel alloc] init];
-            label.userInteractionEnabled = NO;
-            label.alpha =0.25;
-            
-            NSUInteger currentTitleIndex = [self.currentTitles indexOfObject:currentTitle];
-            NSString *titleForThisLabel = [self.currentTitles objectAtIndex:currentTitleIndex];
-            UIColor *colorForThisLabel = [self.colors objectAtIndex:currentTitleIndex];
-            
-            label.textAlignment = NSTextAlignmentCenter;
-            label.font = [UIFont systemFontOfSize:10];
-            label.text = titleForThisLabel;
-            label.backgroundColor = colorForThisLabel;
-            label.textColor = [UIColor whiteColor];
-            
-            [labelsArray addObject:label];
-        }
+        [self drawObject];
         
-        self.labels = labelsArray;
+        self.labels = self.labelsArray;
         
         for (UILabel *thisLabel in self.labels)
         {
@@ -84,6 +67,29 @@
         [self addGestureRecognizer:self.longPressGesture];
     }
     return self;
+}
+
+- (void) drawObject
+{
+    for (NSString *currentTitle in self.currentTitles)
+    {
+        UILabel *label = [[UILabel alloc] init];
+        label.userInteractionEnabled = NO;
+        label.alpha =0.25;
+        
+        NSUInteger currentTitleIndex = [self.currentTitles indexOfObject:currentTitle];
+        NSString *titleForThisLabel = [self.currentTitles objectAtIndex:currentTitleIndex];
+        UIColor *colorForThisLabel = [self.colors objectAtIndex:currentTitleIndex];
+        
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:10];
+        label.text = titleForThisLabel;
+        label.backgroundColor = colorForThisLabel;
+        label.textColor = [UIColor whiteColor];
+        
+        [self.labelsArray addObject:label];
+//        [label layoutIfNeeded];
+    }
 }
 
 - (void) layoutSubviews
@@ -160,7 +166,8 @@
 {
     if (recognizer.state == UIGestureRecognizerStateChanged)
     {
-        //resize the thing
+        [self.delegate floatingToolbar:self didTryToScale:recognizer.scale];
+        [recognizer setScale:1.];
     }
 }
 
@@ -168,6 +175,7 @@
 {
     if (recognizer.state == UIGestureRecognizerStateRecognized)
     {
+        NSLog(@"Long Press fired");
         //move the colors around within the color array
         int numberOfColors = [self.colors count];
         for (int x = 0; x < numberOfColors; x++)
@@ -181,7 +189,9 @@
             {
                 [self.colors exchangeObjectAtIndex:x withObjectAtIndex:0];
             }
+            
         }
+        [self updateLabels];
 
         //set the array to actually show the new colors
     }
@@ -189,7 +199,14 @@
 
 -(void) updateLabels
 {
-    [self layoutSubviews];
+    int numberOfLabels = [self.labels count];
+    for (int index = 0; index < numberOfLabels; index++)
+    {
+        UIColor *labelColor = [self.colors objectAtIndex:index];
+        UILabel *labelToUpdate = [self.labels objectAtIndex:index];
+        labelToUpdate.backgroundColor = labelColor;
+        [labelToUpdate layoutIfNeeded];
+    }
 }
 
 

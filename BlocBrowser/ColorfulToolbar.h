@@ -16,6 +16,7 @@
 
 -(void) floatingToolbar:(ColorfulToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title;
 - (void) floatingToolbar:(ColorfulToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset;
+- (void) floatingToolbar:(ColorfulToolbar *)toolbar didTryToScale: (CGFloat) scale;
 
 @end
 
